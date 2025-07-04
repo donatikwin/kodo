@@ -1,0 +1,75 @@
+@import 'https://fonts.googleapis.com/css?family=Inconsolata';
+
+.notfound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.terminal {
+  padding: 4rem;
+  font-family: 'Inconsolata', sans-serif;
+  border: 1px solid rgba(128, 255, 128, 0.8);
+  border-radius: 20px;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 1px rgba(51, 255, 51, 0.4),
+    0 0 2px rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  width: 90%;
+}
+
+.error__title {
+  color: white;
+  text-align: center;
+  font-size: 62px;
+  margin-bottom: 1rem;
+}
+
+.output {
+  color: rgba(128, 255, 128, 0.8);
+  text-shadow:
+      0 0 1px rgba(51, 255, 51, 0.4),
+      0 0 2px rgba(255, 255, 255, 0.8);
+      line-height: 1.5;
+}
+
+.output::before {
+  content: "> ";
+}
+
+.errorcode {
+  color: white;
+}
+
+.output a {
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.output a:hover {
+  text-decoration: underline;
+}
+
+.output a::after {
+  content: "]";
+}
+
+.output a::before {
+  content: "[";
+}
+
+
+@media (max-width: 480px) {
+  .terminal {
+    padding: 2rem;
+    font-size: 14px;
+  }
+
+  .error__title {
+    font-size: 36px;
+  }
+}

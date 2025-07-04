@@ -1,0 +1,399 @@
+/* Основные стили */
+.profileSettings {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.25rem 0.5rem;
+  color: #f8fafc;
+}
+
+/* Заголовок */
+.settingsHeader {
+  margin-bottom: 2.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.sectionTitle {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  position: relative;
+  background: linear-gradient(90deg, #ffffff, #c9d5ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.titleUnderline {
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #8c64ff, transparent);
+  margin: 0.5rem auto 0;
+  border-radius: 3px;
+}
+
+.sectionSubtitle {
+  color: #94a3b8;
+  font-size: 1rem;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* Карточки */
+.settingsCard {
+  background: rgba(24, 24, 32, 0.5);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(185, 182, 191, 0.1);
+  box-shadow: 
+    0 0 20px rgba(140, 100, 255, 0.15),
+    0 0 10px rgba(255, 255, 255, 0.05),
+    inset 0 0 8px rgba(255, 255, 255, 0.03);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.settingsCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 0 30px rgba(140, 100, 255, 0.3),
+    0 0 15px rgba(255, 255, 255, 0.1),
+    inset 0 0 12px rgba(255, 255, 255, 0.05);
+}
+
+.cardGlow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(140, 100, 255, 0.2), transparent 60%);
+  animation: pulseLight 6s linear infinite;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+@keyframes pulseLight {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.02); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.settingsCard h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  position: relative;
+  z-index: 1;
+}
+
+.userInfoContainer {
+  margin-top: 1.5rem;
+}
+
+.userInfoItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.userInfoItem:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.userInfoLabel {
+  display: flex;
+  align-items: center;
+  min-width: 180px;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.infoIcon {
+  margin-right: 0.8rem;
+  color: #929191;
+  font-size: 1rem;
+}
+
+.userInfoValue {
+  font-weight: 500;
+  color: #e2e8f0;
+  word-break: break-all;
+}
+
+/* Форма */
+.formGroup {
+  margin-bottom: 1.3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: #818cf8;
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+}
+
+.inputHint {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+/* Кнопки */
+.saveBtn {
+  background: rgba(129, 140, 248, 0.2);
+  color: #818cf8;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.saveBtn:hover {
+  background: rgba(129, 140, 248, 0.3);
+}
+
+.saveBtn.activeBtn {
+  background: #818cf8;
+  color: white;
+  box-shadow: 0 4px 15px rgba(129, 140, 248, 0.4);
+}
+
+.saveBtn.activeBtn:hover {
+  background: #6b75c5;
+  transform: translateY(-2px);
+}
+
+.saveBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Зона опасных действий */
+.dangerZone {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.dangerZone h2 {
+  color: #ef4444;
+}
+
+.dangerZone p {
+  color: #94a3b8;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 1;
+}
+
+.deleteBtn {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 0.9rem;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.deleteBtn:hover {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+/* Подтверждение удаления */
+.confirmDelete {
+  margin-top: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.confirmDelete p {
+  color: #fca5a5;
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+}
+
+.confirmButtons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.confirmBtn, .cancelBtn {
+  flex: 1;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.confirmBtn {
+  background: rgba(239, 68, 68, 0.7);
+  color: white;
+  border: none;
+}
+
+.confirmBtn:hover {
+  background: rgba(239, 68, 68, 0.8);
+}
+
+.cancelBtn {
+  background: rgba(30, 41, 59, 0.7);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cancelBtn:hover {
+  background: rgba(30, 41, 59, 0.9);
+}
+
+.deleteWarning {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(239, 68, 68, 0.1);
+  border-left: 3px solid #ef4444;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.warningIcon {
+  color: #ef4444;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.deleteWarning p {
+  color: #fca5a5;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.errorText {
+  display: block;
+  margin-top: 0.5rem;
+  color: #ef4444;
+  font-size: 0.85rem;
+}
+
+.confirmDelete .formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.confirmDelete .formGroup input {
+  background: rgba(239, 68, 68, 0.05);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.confirmDelete .formGroup input:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+/* Анимация для появления подтверждения */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.confirmDelete {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .profileSettings {
+    padding: 1.5rem 1rem;
+  }
+  
+  .settingsCard {
+    padding: 1.3rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+  
+  .settingsCard h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 1.6rem;
+  }
+  
+  .confirmButtons {
+    flex-direction: column;
+  }
+  
+  .formGroup input {
+    padding: 0.7rem 0.9rem;
+  }
+}
+
+.passwordWrapper {
+  position: relative;
+}
+
+.eyeBtn {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #929191;
+}
+

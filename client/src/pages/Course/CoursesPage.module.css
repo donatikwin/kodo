@@ -1,0 +1,150 @@
+/* CoursesPage.module.css */
+.container {
+  margin: 80px 0;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, #818CF8, transparent);
+  border-radius: 3px;
+}
+
+.controls {
+  display: flex;
+  gap: 1.5rem;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.searchInput {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  color: #F8FAFC;
+  font-size: 0.95rem;
+  min-width: 250px;
+  flex-grow: 1;
+  max-width: 400px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.searchInput::placeholder {
+  color: #94A3B8;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: rgba(129, 140, 248, 0.4);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
+}
+
+.coursesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.noResults {
+  color: #94A3B8;
+  font-size: 1rem;
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: 2rem;
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+/* Анимации для карточек курсов */
+.coursesGrid > * {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.coursesGrid > *:nth-child(1) { animation-delay: 0.1s; }
+.coursesGrid > *:nth-child(2) { animation-delay: 0.2s; }
+.coursesGrid > *:nth-child(3) { animation-delay: 0.3s; }
+.coursesGrid > *:nth-child(4) { animation-delay: 0.4s; }
+.coursesGrid > *:nth-child(5) { animation-delay: 0.5s; }
+.coursesGrid > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .container {
+    margin: 60px 0;
+  }
+  
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .controls {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+  
+  .searchInput {
+    min-width: 100%;
+    max-width: 100%;
+  }
+  
+  .coursesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 40px 0;
+  }
+  
+  .title {
+    font-size: 1.4rem;
+  }
+  
+  .title::after {
+    height: 2px;
+    bottom: -6px;
+  }
+}

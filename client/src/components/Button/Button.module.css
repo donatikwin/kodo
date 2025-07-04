@@ -1,0 +1,106 @@
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px ;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 0.64px;
+  color: var(--white);
+  transition: all 0.3s ease;
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    opacity: 0.6;
+  }
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Основные варианты */
+.btn--primary {
+  background-color: var(--orange);
+}
+
+.btn--login {
+  border: 1px solid var(--white);
+  box-shadow: inset 0 0 0 1px var(--white);
+}
+
+.btn--reg {
+  border: 1px solid var(--red);
+  box-shadow: inset 0 0 0 1px var(--red);
+}
+
+.btn--hero {
+  background: linear-gradient(135deg, #6a5acd, #c71585);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(138, 43, 226, 0.3), 0 0 24px rgba(199, 21, 133, 0.3);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+}
+
+.btn--hero::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 45%,
+    rgba(255, 255, 255, 0.1) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: all 0.3s ease;
+}
+
+@media(max-width: 1025px) {
+  .btn--hero {
+    margin: 0 auto;
+  }
+} 
+
+.btn--hero:hover {
+  box-shadow: 0 0 16px rgba(138, 43, 226, 0.4), 0 0 32px rgba(199, 21, 133, 0.4);
+}
+
+
+.btn--heroCta {
+  border: 1px solid var(--red);
+  box-shadow: inset 0 0 0 1px var(--red);
+  width: 300px;
+}
+
+@media (max-width: 720px) {
+  .btn--heroCta {
+    width: 200px;
+  }
+}
+
+@media (max-width: 420px) {
+  .btn--heroCta {
+    width: 180px;
+  }
+}

@@ -1,0 +1,453 @@
+.wrapper {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(129, 140, 248, 0.1) 0%,
+    transparent 70%
+  );
+  animation: rotateGradient 15s linear infinite;
+  z-index: 0;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  margin: 0 0 0.5rem 0;
+  position: relative;
+  display: inline-block;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, #818CF8, transparent);
+  border-radius: 3px;
+}
+
+.subtitle {
+  color: #94A3B8;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.techSelector {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.techButton {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  color: #94A3B8;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.techButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(129, 140, 248, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.techButton:hover {
+  color: #F8FAFC;
+  border-color: rgba(129, 140, 248, 0.4);
+}
+
+.techButton.active {
+  background: rgba(129, 140, 248, 0.1);
+  color: #818CF8;
+  border-color: rgba(129, 140, 248, 0.5);
+}
+
+.techButton.active::before {
+  opacity: 1;
+}
+
+.levelsContainer {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.levels {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 220px;
+}
+
+.levelCard {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.levelCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: #818CF8;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.levelCard:hover {
+  background: rgba(30, 41, 59, 0.7);
+  border-color: rgba(129, 140, 248, 0.3);
+}
+
+.levelCard.selected {
+  background: rgba(129, 140, 248, 0.1);
+  border-color: rgba(129, 140, 248, 0.5);
+}
+
+.levelCard.selected::before {
+  transform: translateX(0);
+}
+
+.levelContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.levelTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #F8FAFC;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.levelCard.selected .levelTitle {
+  color: #818CF8;
+}
+
+.levelLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  background: rgba(129, 140, 248, 0.1);
+  color: #818CF8;
+  align-self: flex-start;
+}
+
+.levelProgress {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin-top: 0.75rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.levelProgress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--progress, 0%);
+  background: linear-gradient(90deg, #818CF8, #6366F1);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.levelCard[data-level="beginner"] .levelProgress::after { --progress: 25%; }
+.levelCard[data-level="junior"] .levelProgress::after { --progress: 50%; }
+.levelCard[data-level="middle"] .levelProgress::after { --progress: 75%; }
+.levelCard[data-level="senior"] .levelProgress::after { --progress: 100%; }
+
+.levelDetails {
+  flex: 1;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.levelHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.detailTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #F8FAFC;
+  margin: 0;
+}
+
+.levelPill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  background: rgba(129, 140, 248, 0.1);
+  color: #818CF8;
+}
+
+.levelPill[data-level="beginner"] { background: rgba(74, 222, 128, 0.1); color: #4ADE80; }
+.levelPill[data-level="junior"] { background: rgba(96, 165, 250, 0.1); color: #60A5FA; }
+.levelPill[data-level="middle"] { background: rgba(167, 139, 250, 0.1); color: #A78BFA; }
+.levelPill[data-level="senior"] { background: rgba(244, 114, 182, 0.1); color: #F472B6; }
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.category {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 8px;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.categoryHeader h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #F8FAFC;
+  margin: 0;
+}
+
+.skillList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.skillItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #E2E8F0;
+  line-height: 1.5;
+}
+
+.bullet {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #818CF8;
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+}
+
+@keyframes rotateGradient {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.detailsContainer {
+  flex: 1;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  border-radius: 12px;
+  min-height: 400px;
+  display: flex;
+}
+
+.prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  width: 100%;
+  color: #94A3B8;
+}
+
+.promptIllustration {
+  margin-bottom: 1.5rem;
+  opacity: 0.6;
+}
+
+.promptTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #E2E8F0;
+  margin-bottom: 0.75rem;
+}
+
+.promptText {
+  max-width: 400px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .levelsContainer {
+    flex-direction: column;
+  }
+  
+  .levels {
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: 100%;
+  }
+  
+  .levelCard {
+    flex: 1;
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 1.5rem;
+  }
+  
+  .techSelector {
+    flex-wrap: wrap;
+  }
+  
+  .categories {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .levelCard {
+    min-width: 100%;
+  }
+}
+
+.skillItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: #E2E8F0;
+  line-height: 1.5;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.skillItem:hover {
+  background: rgba(129, 140, 248, 0.1);
+}
+
+.skillItem.completed {
+  color: #94A3B8;
+  text-decoration: line-through;
+}
+
+.bullet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  border-radius: 50%;
+  background: rgba(129, 140, 248, 0.1);
+  margin-top: 0.15rem;
+}
+
+.checkIcon {
+  color: #4ADE80;
+  font-size: 0.7rem;
+}
+
+.circleIcon {
+  color: #818CF8;
+  font-size: 0.5rem;
+  opacity: 0.7;
+}
+
+.skillItem.completed .bullet {
+  background: rgba(74, 222, 128, 0.1);
+}
+
+.skillItem.completed .circleIcon {
+  display: none;
+}
+
+.skillItem:not(.completed) .checkIcon {
+  display: none;
+}

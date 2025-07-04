@@ -1,0 +1,668 @@
+/* Основные стили */
+.home {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow-x: hidden;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80vh;
+  gap: 40px;
+  overflow: hidden;
+  z-index: 1;
+  background: transparent;
+  isolation: isolate;
+  padding: 0 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.heroContent {
+  flex: 1 1 60%;
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #8e9eb4;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.heroButtons a {
+  width: 100%;
+  max-width: 400px;
+}
+
+
+.heroImage {
+  position: relative;
+  flex: 1 1 40%;
+  height: auto;
+  min-height: 300px;
+  align-self: stretch;
+}
+
+/* Анимационные элементы */
+.gradientCircle {
+  position: absolute;
+  width: min(400px, 100%);
+  height: min(400px, 100%);
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #3b82f6, transparent 70%);
+  opacity: 0.4;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 8s infinite alternate;
+}
+
+.floatingElements {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.floatingElements div {
+  position: absolute;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+.element1 {
+  width: min(200px, 30%);
+  height: min(120px, 20%);
+  top: 10%;
+  left: 10%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.element2 {
+  width: min(160px, 25%);
+  height: min(160px, 25%);
+  top: 50%;
+  right: 10%;
+  animation: float 8s ease-in-out infinite 2s;
+}
+
+.element3 {
+  width: min(180px, 28%);
+  height: min(100px, 18%);
+  bottom: 10%;
+  left: 30%;
+  animation: float 7s ease-in-out infinite 1s;
+}
+
+/* Адаптивные изменения */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    min-height: auto;
+    padding: 60px 0;
+  }
+  
+  .heroContent {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  
+  .heroImage {
+    display: contents;
+  }
+  
+  .gradientCircle,
+  .floatingElements {
+    display: none; 
+  }
+}
+
+@media (max-width: 480px) {
+  
+  .heroButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .heroButtons a {
+    max-width: 100%;
+  }
+  
+  .heroImage {
+    height: 200px;
+    margin-top: 30px;
+  }
+  
+  .gradientCircle {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Features секция */
+.features {
+  padding: 100px 0;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-size: 60px;
+  font-weight: 600;
+
+  font-weight: 700;
+  margin-bottom: 60px;
+  background: linear-gradient(90deg, #ffffff, #c9d5ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #8c64ff, transparent);
+}
+
+.featuresGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featureCard {
+  position: relative;
+  background: rgba(24, 24, 32, 0.5);
+  border-radius: 20px;
+  padding: 30px 20px;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+
+  /* Неоновая рамка */
+  border: 1px solid rgba(185, 182, 191, 0.1);
+  box-shadow:
+    0 0 20px rgba(140, 100, 255, 0.15),
+    0 0 10px rgba(255, 255, 255, 0.05),
+    inset 0 0 8px rgba(255, 255, 255, 0.03);
+}
+
+.featureCard::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(140, 100, 255, 0.2), transparent 60%);
+  animation: pulseLight 6s linear infinite;
+  z-index: 0;
+}
+
+@keyframes pulseLight {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.02);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.featureCard:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:
+    0 0 30px rgba(140, 100, 255, 0.3),
+    0 0 10px rgba(255, 255, 255, 0.1),
+    inset 0 0 12px rgba(255, 255, 255, 0.05);
+}
+
+/* Иконки */
+.featureIcon {
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: var(--color-white);
+}
+
+/* Заголовки */
+.featureCard h3 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+/* Текст */
+.featureCard p {
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+@media(max-width: 720px) {
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* Секция технологий */
+
+.techSection {
+  padding: 80px 20px;
+  border-radius: 20px;
+  color: #f8fafc;
+  text-align: center;
+  background: rgba(24, 24, 32, 0.5);
+
+  border: 1px solid rgba(185, 182, 191, 0.1);
+  box-shadow:
+    0 0 20px rgba(140, 100, 255, 0.15),
+    0 0 10px rgba(255, 255, 255, 0.05),
+    inset 0 0 8px rgba(255, 255, 255, 0.03);
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 50px;  
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.techCard {
+  background: #1e293b;
+  padding: 30px 25px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.techCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(129, 140, 248, 0.3);
+}
+
+.techHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.techIcon {
+  font-size: 2rem;
+}
+
+.progressContainer {
+  height: 8px;
+  background: #334155;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progressBar {
+  height: 100%;
+  transition: width 0.6s ease;
+  border-radius: 8px;
+}
+
+.percentageLabel {
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+/* Адаптив */
+@media (max-width: 720px) {
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+
+  .techCard {
+    padding: 20px;
+  }
+  .techIcon {
+    font-size: 1rem;
+  } 
+}
+@media (max-width: 420px) {
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+
+  .techCard {
+    padding: 20px;
+  }
+}
+
+
+/* Секция технологий */
+.techSection {
+  padding: 80px 20px;
+  background: #0f172a; /* темный background */
+  color: #f8fafc;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 2.75rem;
+  font-weight: 800;
+  margin-bottom: 60px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  padding: 0 10px;
+}
+
+.techCard {
+  background: linear-gradient(145deg, #1e293b, #111827);
+  padding: 28px 24px;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 340px;
+  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.techCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(129, 140, 248, 0.25);
+}
+
+.techCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05), transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.techCard:hover::before {
+  opacity: 1;
+}
+
+.techHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.techIcon {
+  font-size: 2.4rem;
+  transition: transform 0.4s ease, filter 0.4s;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.1));
+}
+
+.techCard:hover .techIcon {
+  transform: scale(1.15) rotate(3deg);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+.progressContainer {
+  height: 10px;
+  background: #334155;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.progressBar {
+  height: 100%;
+  transition: width 0.8s ease;
+  border-radius: 50px;
+  position: relative;
+}
+
+.percentageLabel {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  letter-spacing: 0.3px;
+}
+
+/* Glow effect */
+.progressBar::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  filter: blur(4px);
+  opacity: 0.5;
+  animation: pulseGlow 1.5s infinite;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-8px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+
+  .techCard {
+    padding: 24px;
+  }
+
+  .techHeader {
+    font-size: 1.1rem;
+  }
+
+  .techIcon {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+
+  .techCard {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .techIcon {
+    font-size: 1.75rem;
+  }
+
+  .techHeader {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+
+/* CTA секция */
+.cta {
+  position: relative;
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 20px rgba(140, 100, 255, 0.1),
+    0 0 12px rgba(255, 255, 255, 0.04),
+    inset 0 0 10px rgba(255, 255, 255, 0.02);
+  border-radius: 28px;
+  padding: 80px 40px;
+  margin: 100px 0;
+  text-align: center;
+  color: #f8fafc;
+  overflow: hidden;
+  isolation: isolate;
+  backdrop-filter: blur(12px);
+}
+
+/* Decorative glow circle */
+.cta::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 70%);
+  animation: pulseBlur 6s ease-in-out infinite;
+  z-index: -1;
+  filter: blur(40px);
+}
+
+@keyframes pulseBlur {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
+.ctaContent h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.7s ease-out both;
+}
+
+.ctaContent p {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  animation: fadeInUp 0.9s ease-out both;
+}
+
+.ctaContent a{
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .cta {
+    padding: 60px 24px;
+    margin: 80px 0;
+  }
+
+  .ctaContent h2 {
+    font-size: 2rem;
+  }
+
+  .ctaContent p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ctaContent h2 {
+    font-size: 1.75rem;
+  }
+
+  .ctaContent p {
+    font-size: 1rem;
+  }
+}

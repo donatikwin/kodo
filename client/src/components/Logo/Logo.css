@@ -1,0 +1,39 @@
+
+.logo-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  transition: all .5 ease;
+}
+
+.logo {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fbfbfb;
+  text-shadow: 0 0 6px rgba(248, 248, 248, 0.6);
+}
+
+.logo-sub {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 500;
+  margin-top: 2px;
+  letter-spacing: 0.3px;
+}
+
+@media (hover: hover) {
+  .logo-block:hover .logo-sub {
+    color: #fbfbfb;
+    text-shadow: 0 0 6px rgba(248, 248, 248, 0.6);
+  }
+}
+
+@media (max-width: 1024px) {
+  .logo {
+    font-size: 24px;
+  }
+  .logo-sub {
+    font-size: 12px;
+  }
+}
